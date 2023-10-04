@@ -10,7 +10,7 @@ This organization contains the collection of my toy projects during learning. So
 
 - [tiny KV](https://github.com/ihusharp/talent-plan_tinykv): A tiny key-value store, and builds a key-value storage system with the Raft consensus algorithm. It is inspired by [MIT 6.824](https://pdos.csail.mit.edu/6.824/) and [TiKV Project](https://github.com/tikv/tikv). After completing this, I have the knowledge to implement a horizontally scalable, highly available, key-value storage service with distributed transaction support :)
 
-- **[tiny OS](https://github.com/ihusharp/HuSharp_OS)**: A tiny operating system. Complete the filling of Tsinghua [uCoreOS_labs](https://github.com/ihusharp/uCoreOS_labs), and refer to [The truth about operating systems](https://book.douban.com/subject/26745156/) to impl a simple operating system on bochs, the main contents are:
+- [tiny OS](https://github.com/ihusharp/HuSharp_OS): A tiny operating system. Complete the filling of Tsinghua [uCoreOS_labs](https://github.com/ihusharp/uCoreOS_labs), and refer to [The truth about operating systems](https://book.douban.com/subject/26745156/) to impl a simple operating system on bochs, the main contents are:
 
   - kernel thread, user process, fork and execv, task scheduling;
   - interrupts (clock, keyboard, hard disk, system call, etc.), memory management, file system, shell, pipeline;
@@ -18,7 +18,7 @@ This organization contains the collection of my toy projects during learning. So
 
   Approximately 6323 lines of valid code, using knowledge of c/c++, assembly, bochs debugging, and Unix system programming.
 
-- **[tiny MIPS CPU](https://github.com/ihusharp/hust_MIPS_CPU_Design)**: Utilizing knowledge of combinational logic and synchronous timing logic circuit design, start with logic gates and gradually build operators, memories, datapaths, and controllers, ultimately integrating them into a complete CPU prototype system. Inspired by [Computer Composition Principle](https://book.douban.com/subject/35379794/).
+- [tiny MIPS CPU](https://github.com/ihusharp/hust_MIPS_CPU_Design): Utilizing knowledge of combinational logic and synchronous timing logic circuit design, start with logic gates and gradually build operators, memories, datapaths, and controllers, ultimately integrating them into a complete CPU prototype system. Inspired by [Computer Composition Principle](https://book.douban.com/subject/35379794/).
 
 And I use different languages for writing code, especially Go & Rust.
 
