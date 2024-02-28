@@ -8,15 +8,9 @@ This organization contains the collection of my toy projects during learning. So
 
 - [UnixImpl](https://github.com/ihusharp/Unix-Linux_Programming#unix-linux_programming): inspired by [Understanding Unix/Linux Programming](https://www.perlmonks.org/?node=Tutorials)
 
-- [Tiny KV](https://github.com/ihusharp/talent-plan_tinykv): A tiny key-value store, and builds a key-value storage system with the Raft consensus algorithm. It is inspired by [MIT 6.824](https://pdos.csail.mit.edu/6.824/) and [TiKV Project](https://github.com/tikv/tikv). After completing this, I have the knowledge to implement a horizontally scalable, highly available, key-value storage service with distributed transaction support :)
+- [Tiny KV](https://github.com/ihusharp/talent-plan_tinykv): A tiny key-value store, and builds a key-value storage system with the Raft consensus algorithm. It is inspired by [MIT 6.824](https://pdos.csail.mit.edu/6.824/) and [TiKV Project](https://github.com/tikv/tikv).
 
-- [Tiny OS](https://github.com/ihusharp/HuSharp_OS): A tiny operating system. Complete the filling of Tsinghua [uCoreOS_labs](https://github.com/ihusharp/uCoreOS_labs), and refer to [The truth about operating systems](https://book.douban.com/subject/26745156/) to impl a simple operating system on bochs, the main contents are:
-
-  - kernel thread, user process, fork and execv, task scheduling;
-  - interrupts (clock, keyboard, hard disk, system call, etc.), memory management, file system, shell, pipeline;
-  - binary semaphore based locks, file system, and so on.
-
-  Approximately 6323 lines of valid code, using knowledge of c/c++, assembly, bochs debugging, and Unix system programming.
+- [Tiny OS](https://github.com/ihusharp/HuSharp_OS): A tiny operating system. Complete the filling of Tsinghua [uCoreOS_labs](https://github.com/ihusharp/uCoreOS_labs), and refer to [The truth about operating systems](https://book.douban.com/subject/26745156/) to impl a simple operating system on bochs:
 
 - [Tiny MIPS CPU](https://github.com/ihusharp/hust_MIPS_CPU_Design): Utilizing knowledge of combinational logic and synchronous timing logic circuit design, start with logic gates and gradually build operators, memories, datapaths, and controllers, ultimately integrating them into a complete CPU prototype system. Inspired by [Computer Composition Principle](https://book.douban.com/subject/35379794/).
 
@@ -39,7 +33,7 @@ And I use different languages for writing code, especially Go & Rust.
 ### Some Rust Impl
 
 - [LSM in a Week](https://skyzh.github.io/mini-lsm/): This very in-depth tutorial covers all the essential implementation details and design choices of modern storage systems (i.e., RocksDB) based on the author's experience in several LSM-like storage systems, and you will be able to directly apply what you have learned in both industry and academia. [**personal impl**](https://github.com/ihusharp/mini-lsm/tree/husharp_lsm)
-- [Writing an OS in Rust](https://os.phil-opp.com/): This blog series creates a small operating system in the [Rust programming language](https://www.rust-lang.org/). Each post is a small tutorial and includes all needed code, so you can follow along if you like. The source code is also available in the corresponding [repository](https://github.com/phil-opp/blog_os). [**personal impl**](https://github.com/ihusharp/Rust-practice/tree/master/os_rust)
+- [Writing an OS in Rust](https://os.phil-opp.com/): This blog series creates a small operating system in Rust. Each post is a small tutorial and includes all needed code, so you can follow along if you like. [**personal impl**](https://github.com/ihusharp/Rust-practice/tree/master/os_rust)
 - [Tokio](https://tokio.rs/tokio/tutorial): This tutorial will take you step by step through the process of building a [Redis](https://redis.io/) client and server. We will start with the basics of asynchronous programming with Rust and build up from there. We will implement a subset of Redis commands but will get a comprehensive tour of Tokio. [**personal impl**](https://github.com/ihusharp/Rust-practice/tree/master/my-redis)
-- [Hecto](https://www.flenker.blog/hecto/): This is a series of blog posts that shows you how to build a text editor in Rust. It’s a re-implementation of [kilo](http://antirez.com/news/108) in Rust, as outlined in [this fantastic tutorial](https://viewsourcecode.org/snaptoken/kilo/index.html). Same as the original booklet, these blog posts guide you through all the steps to build a basic text editor, `hecto`. [**personal impl**](https://github.com/ihusharp/Rust-practice/tree/master/hecto)
-- [Lists](https://rust-unofficial.github.io/too-many-lists/): This is a series of how to implement a linked list in Rust. The answer honestly depends on what your requirements are, and it's obviously not super easy to answer the question on the spot. As such I've decided to write this book to comprehensively answer the question once and for all. [**personal impl**](https://github.com/ihusharp/Rust-practice/tree/master/lists)
+- [Hecto](https://www.flenker.blog/hecto/): This is a series of blog posts that shows you how to build a text editor in Rust. These blog posts guide you through all the steps to build a basic text editor, `hecto`. [**personal impl**](https://github.com/ihusharp/Rust-practice/tree/master/hecto)
+- [Lists](https://rust-unofficial.github.io/too-many-lists/): This is a series of how to implement a linked list in Rust. The answer honestly depends on what your requirements are, and it's obviously not super easy to answer the question on the spot. As such the author has decided to write this book to comprehensively answer the question once and for all. [**personal impl**](https://github.com/ihusharp/Rust-practice/tree/master/lists)
