@@ -37,3 +37,7 @@ And I use different languages for writing code, especially Go & Rust.
 - [Tokio](https://tokio.rs/tokio/tutorial): This tutorial will take you step by step through the process of building a [Redis](https://redis.io/) client and server. We will start with the basics of asynchronous programming with Rust and build up from there. We will implement a subset of Redis commands but will get a comprehensive tour of Tokio. [**personal impl**](https://github.com/ihusharp/Rust-practice/tree/master/my-redis)
 - [Hecto](https://www.flenker.blog/hecto/): This is a series of blog posts that shows you how to build a text editor in Rust. These blog posts guide you through all the steps to build a basic text editor, `hecto`. [**personal impl**](https://github.com/ihusharp/Rust-practice/tree/master/hecto)
 - [Lists](https://rust-unofficial.github.io/too-many-lists/): This is a series of how to implement a linked list in Rust. The answer honestly depends on what your requirements are, and it's obviously not super easy to answer the question on the spot. As such the author has decided to write this book to comprehensively answer the question once and for all. [**personal impl**](https://github.com/ihusharp/Rust-practice/tree/master/lists)
+
+### Paper Reading
+
+![paper_read](../stat.png)
