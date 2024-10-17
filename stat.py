@@ -60,13 +60,20 @@ df_created = pd.DataFrame(index=pd.to_datetime(created_times))
 df_closed = pd.DataFrame(index=pd.to_datetime(closed_times))
 
 # Group by day
-stat_created = df_created.groupby(pd.Grouper(freq='D')).size()
-stat_closed = df_closed.groupby(pd.Grouper(freq='D')).size()
+stat_created = df_created.groupby(pd.Grouper(freq='W')).size()
+stat_closed = df_closed.groupby(pd.Grouper(freq='W')).size()
+
+# Align the indices
+stat_created, stat_closed = stat_created.align(stat_closed, fill_value=0)
 
 # Plotting
 fig, ax = plt.subplots(figsize=(15, 10))
-ax.bar(stat_created.index, stat_created.values, label='Open Issues', alpha=0.6, color='orange')
-ax.bar(stat_closed.index, stat_closed.values, label='Closed Issues', alpha=0.6, color='purple')
+
+width = 0.4
+dates = stat_created.index
+
+ax.bar(dates - pd.Timedelta(days=width/2), stat_created.values, width=width, label='Started Papers', alpha=0.6, color='lightgreen')
+ax.bar(dates + pd.Timedelta(days=width/2), stat_closed.values, width=width, label='Finished Papers', alpha=0.6, color='lightblue')
 
 # Set major locator and formatter
 ax.xaxis.set_major_locator(mdates.MonthLocator())
