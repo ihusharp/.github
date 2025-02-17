@@ -8,9 +8,6 @@ import pandas as pd
 import requests
 from requests.exceptions import HTTPError
 
-closed_time = []
-page = 1
-
 token = os.getenv("PAPER_GITHUB_TOKEN")
 
 # Define the headers
@@ -66,23 +63,42 @@ stat_closed = df_closed.groupby(pd.Grouper(freq='W')).size()
 # Align the indices
 stat_created, stat_closed = stat_created.align(stat_closed, fill_value=0)
 
+# Calculate cumulative open papers
+cumulative_created = stat_created.cumsum()
+cumulative_closed = stat_closed.cumsum()
+open_papers = cumulative_created - cumulative_closed
+
 # Plotting
 fig, ax = plt.subplots(figsize=(15, 10))
 
 width = 0.4
 dates = stat_created.index
 
-ax.bar(dates - pd.Timedelta(days=width/2), stat_created.values, width=width, label='Started Papers', alpha=0.6, color='lightgreen')
-ax.bar(dates + pd.Timedelta(days=width/2), stat_closed.values, width=width, label='Finished Papers', alpha=0.6, color='lightblue')
+# Plot bars
+ax.bar(dates - pd.Timedelta(days=width/2), stat_created.values, width=width, 
+       label='Started Papers', alpha=0.6, color='lightgreen')
+ax.bar(dates + pd.Timedelta(days=width/2), stat_closed.values, width=width, 
+       label='Finished Papers', alpha=0.6, color='lightblue')
+
+# Plot the open papers line
+ax2 = ax.twinx()
+ax2.plot(dates, open_papers.values, color='orange', linewidth=2, 
+         label='Open Papers', marker='o', markersize=4)
+ax2.set_ylabel('# Open Papers', color='black')
 
 # Set major locator and formatter
 ax.xaxis.set_major_locator(mdates.MonthLocator())
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
 
+# Combine legends
+lines1, labels1 = ax.get_legend_handles_labels()
+lines2, labels2 = ax2.get_legend_handles_labels()
+ax.legend(lines1 + lines2, labels1 + labels2, loc='upper left')
+
 ax.figure.autofmt_xdate(rotation=30, ha='center')
 ax.set_xlabel("Date")
 ax.set_ylabel("# Papers")
-ax.set_title("Statistics of Reading Papers (up to %s)" %
-             datetime.datetime.today().strftime('%Y-%m-%d'))
-ax.legend()
+ax.set_title("Statistics of Reading Papers (up to %s)" % datetime.datetime.today().strftime('%Y-%m-%d'))
+
+plt.tight_layout()
 plt.savefig("stat.png")
