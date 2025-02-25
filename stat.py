@@ -80,11 +80,16 @@ ax.bar(dates - pd.Timedelta(days=width/2), stat_created.values, width=width,
 ax.bar(dates + pd.Timedelta(days=width/2), stat_closed.values, width=width, 
        label='Finished Papers', alpha=0.6, color='lightblue')
 
-# Plot the open papers line
+# Plot the remaining papers line
 ax2 = ax.twinx()
 ax2.plot(dates, open_papers.values, color='orange', linewidth=2, 
-         label='Open Papers', marker='o', markersize=4)
-ax2.set_ylabel('# Open Papers', color='black')
+         label='Remaining Papers', marker='o', markersize=4)
+ax2.set_ylabel('# Remaining Papers', color='black')
+
+# Plot the finished papers line
+ax2.plot(dates, cumulative_closed.values, color='coral', linewidth=2, 
+         label='Finished Papers', marker='o', markersize=4)
+ax2.set_ylabel('# Finished Papers', color='black')
 
 # Set major locator and formatter
 ax.xaxis.set_major_locator(mdates.MonthLocator())
