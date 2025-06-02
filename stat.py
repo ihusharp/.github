@@ -45,37 +45,36 @@ def fetch_issues(state):
     return issues
 
 # Fetch closed and all issues
-created_issues = fetch_issues("open")
+opened_issues = fetch_issues("open")
 closed_issues = fetch_issues("closed")
 
 # Extract closed times and created times
-created_times = [item["created_at"] for item in created_issues]
+opened_times = [item["created_at"] for item in opened_issues]
 closed_times = [item["closed_at"] for item in closed_issues]
 
 # Convert times to datetime and create DataFrames
-df_created = pd.DataFrame(index=pd.to_datetime(created_times))
+df_opened = pd.DataFrame(index=pd.to_datetime(opened_times))
 df_closed = pd.DataFrame(index=pd.to_datetime(closed_times))
 
 # Group by day
-stat_created = df_created.groupby(pd.Grouper(freq='W')).size()
+stat_opened = df_opened.groupby(pd.Grouper(freq='W')).size()
 stat_closed = df_closed.groupby(pd.Grouper(freq='W')).size()
 
 # Align the indices
-stat_created, stat_closed = stat_created.align(stat_closed, fill_value=0)
+stat_opened, stat_closed = stat_opened.align(stat_closed, fill_value=0)
 
-# Calculate cumulative open papers
-cumulative_created = stat_created.cumsum()
-cumulative_closed = stat_closed.cumsum()
-open_papers = cumulative_created - cumulative_closed
+# Calculate open papers and closed papers
+open_papers = stat_opened.cumsum()
+closed_papers = stat_closed.cumsum()
 
 # Plotting
 fig, ax = plt.subplots(figsize=(15, 10))
 
 width = 0.4
-dates = stat_created.index
+dates = stat_opened.index
 
 # Plot bars
-ax.bar(dates - pd.Timedelta(days=width/2), stat_created.values, width=width, 
+ax.bar(dates - pd.Timedelta(days=width/2), stat_opened.values, width=width, 
        label='Started Papers', alpha=0.6, color='lightgreen')
 ax.bar(dates + pd.Timedelta(days=width/2), stat_closed.values, width=width, 
        label='Finished Papers', alpha=0.6, color='lightblue')
@@ -87,7 +86,7 @@ ax2.plot(dates, open_papers.values, color='orange', linewidth=2,
 ax2.set_ylabel('# Remaining Papers', color='black')
 
 # Plot the finished papers line
-ax2.plot(dates, cumulative_closed.values, color='coral', linewidth=2, 
+ax2.plot(dates, closed_papers.values, color='coral', linewidth=2, 
          label='Finished Papers', marker='o', markersize=4)
 ax2.set_ylabel('# Finished Papers', color='black')
 
