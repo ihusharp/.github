@@ -15,7 +15,10 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          # Pin to a supported stable Python version that is compatible with
+          # the pinned matplotlib/pandas versions used in requirements.txt.
+          # Using 3.11 avoids some binary/build issues seen on newer host Pythons.
+          python-version: '3.11'
       - name: install dependencies
         env:
           PAPER_GITHUB_TOKEN: ${{ secrets.PAPER_GITHUB_TOKEN }}

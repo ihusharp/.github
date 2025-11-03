@@ -8,7 +8,7 @@ import pandas as pd
 import requests
 from requests.exceptions import HTTPError
 
-token = os.getenv("PAPER_GITHUB_TOKEN")
+# token = os.getenv("PAPER_GITHUB_TOKEN")
 
 # Define the headers
 headers = {
@@ -28,11 +28,13 @@ def fetch_issues(state):
         )
         try:
             response.raise_for_status()
-        except requests.HTTPError as http_error:
-            print(f"HTTP error occurred: {http_error}")
+        except HTTPError as http_error:
+            # Provide more context for failures in CI logs
+            print(f"HTTP error occurred when fetching {state} issues (page={page}): {http_error}")
+            print("Response content:", response.text)
             sys.exit(1)
         except Exception as err:
-            print(f"Other error occurred: {err}")
+            print(f"Unexpected error occurred when fetching {state} issues (page={page}): {err}")
             sys.exit(1)
         else:
             print("Success!")
