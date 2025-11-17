@@ -8,7 +8,7 @@ import pandas as pd
 import requests
 from requests.exceptions import HTTPError
 
-# token = os.getenv("PAPER_GITHUB_TOKEN")
+token = os.getenv("PAPER_GITHUB_TOKEN")
 
 # Define the headers
 headers = {
