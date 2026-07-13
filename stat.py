@@ -42,7 +42,11 @@ def fetch_issues(state):
         json_response = response.json()
         if not json_response:
             break
-        issues.extend(json_response)
+        for issue in json_response:
+            labels = issue.get("labels", [])
+            if any(label.get("name") == "Original" for label in labels):
+                continue
+            issues.append(issue)
         page += 1
     return issues
 
